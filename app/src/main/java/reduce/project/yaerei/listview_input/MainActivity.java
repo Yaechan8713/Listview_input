@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListActivity list/* = new ListActivity()*/;
+    ListActivity list /*= new ListActivity()*/;
     ListView listview;
     ArrayAdapter<String> adapter;
 
