@@ -1,5 +1,7 @@
 package reduce.project.yaerei.listview_input;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +11,7 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListActivity list = new ListActivity();
+    ListActivity list/* = new ListActivity()*/;
     ListView listview;
     ArrayAdapter<String> adapter;
 
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         listview.setAdapter(adapter);
 
+
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -35,8 +39,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        int count = 0;
+
+        SharedPreferences spr = getSharedPreferences("count", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = spr.edit();
+        editor.putInt("count",count);
+        editor.commit();
+
         list.Listinput("高尾",adapter);
         list.Listdisplay(adapter);
+
 
     }
 

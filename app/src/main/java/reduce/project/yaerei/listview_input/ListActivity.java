@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
@@ -14,33 +15,33 @@ import android.widget.ArrayAdapter;
 
 public class ListActivity extends AppCompatActivity {
 
-
-
     private SharedPreferences spr;
 
     SharedPreferences.Editor editor;
+
+//    int zero = 0;
 
     public ListActivity(){
 
     }
 
     public void Listinput(String word,ArrayAdapter<String> adapter){
-        int count;
+        int count = 0;
 
         try {
-            SharedPreferences spr = getSharedPreferences("count", MODE_PRIVATE);
+            SharedPreferences spr = getSharedPreferences("count",Context. MODE_PRIVATE);
             count = spr.getInt("count", 0);
         }catch (RuntimeException e){
             count = 0;
         }
         count++;
 
-        spr = getSharedPreferences("count", MODE_PRIVATE);
+        spr = getSharedPreferences("count", Context.MODE_PRIVATE);
         editor = spr.edit();
         editor.putInt("count",count);
         editor.commit();
 
-        spr = getSharedPreferences(count + "",MODE_PRIVATE);
+        spr = getSharedPreferences(count + "",Context.MODE_PRIVATE);
         editor = spr.edit();
         editor.putString(count + "",word);
         editor.commit();
